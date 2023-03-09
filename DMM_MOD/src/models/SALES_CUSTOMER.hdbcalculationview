@@ -56,7 +56,7 @@
     <calculatedViewAttributes/>
     <input node="BusinessPartner"/>
   </calculationView>
-  <calculationView xsi:type="Calculation:JoinView" id="J_BP_BPC" cardinality="C1_1" joinType="inner">
+  <calculationView xsi:type="Calculation:JoinView" id="J_BP_BPC" cardinality="C1_1" joinType="inner" optimizeJoinColumns="false">
     <viewAttributes>
       <viewAttribute id="PartnerId"/>
       <viewAttribute id="PartnerRole"/>
@@ -157,6 +157,8 @@
     </attribute>
     <attribute id="PHONE_NUMBER" order="7" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="PHONE_NUMBER"/>
+      <maskingExpression>LEFT(&quot;PHONE_NUMBER&quot;, 2) || 'XXXX' || RIGHT(&quot;PHONE_NUMBER&quot;,2)
+</maskingExpression>
       <keyMapping columnObjectName="J_SO_BP" columnName="PHONE_NUMBER"/>
     </attribute>
     <attribute id="ContactId" order="8" displayAttribute="false" attributeHierarchyActive="false">
@@ -206,25 +208,25 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="328.6900820831794" y="112"/>
+      <upperLeftCorner x="328" y="112"/>
     
       <rectangleSize width="160"/>
     </shape>
   
     <shape expanded="true" modelObjectName="Proj_SO" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="395.83468516943316" y="356.9999988079071"/>
+      <upperLeftCorner x="395" y="356"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Proj_BPC" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="302" y="496.9999976158142"/>
+      <upperLeftCorner x="302" y="496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="Proj_BP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="496.9999976158142"/>
+      <upperLeftCorner x="92" y="496"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape expanded="true" modelObjectName="J_BP_BPC" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="118.66666666666666" y="356.9999988079071"/>
+      <upperLeftCorner x="118" y="356"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="Proj_BP" modelObjectNameSpace="J_BP_BPC" modelObjectType="JoinNodeInput">
@@ -236,16 +238,16 @@
       <rectangleSize width="250"/>
     </shape>
     <shape expanded="true" modelObjectName="J_SO_BP" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="328.6900820831794" y="217"/>
+      <upperLeftCorner x="328" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="J_BP_BPC" modelObjectNameSpace="J_SO_BP" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="383" y="53"/>
-      <rectangleSize width="178.90380859375"/>
+      <rectangleSize width="178"/>
     </shape>
     <shape modelObjectName="Proj_SO" modelObjectNameSpace="J_SO_BP" modelObjectType="JoinNodeInput">
       <upperLeftCorner x="88" y="52"/>
-      <rectangleSize width="159.9814453125"/>
+      <rectangleSize width="159"/>
     </shape>
   </shapes>
 </layout>

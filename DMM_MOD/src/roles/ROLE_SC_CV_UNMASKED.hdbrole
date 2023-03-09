@@ -1,0 +1,12 @@
+{
+	"role": {
+		"name": "ROLE_SC_CV_UNMASKED",
+		"object_privileges": [
+			{
+				"name": "SALES_CUSTOMER",
+				"type": "VIEW",
+				"privileges": ["SELECT", "UNMASKED"]
+			}
+		]
+	}
+}
