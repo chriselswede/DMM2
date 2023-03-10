@@ -4,7 +4,7 @@
       "schema_privileges":[  
         {  
           "reference":"DMM260",
-          "privileges_with_grant_option":["SELECT", "SELECT METADATA"]
+          "privileges_with_grant_option":["SELECT", "SELECT METADATA", "EXECUTE"]
         }
       ]
     },

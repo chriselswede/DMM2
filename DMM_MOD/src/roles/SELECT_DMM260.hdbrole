@@ -1,0 +1,11 @@
+{
+	"role": {
+		"name": "SELECT_DMM260", 
+		"schema_privileges": [
+			{
+				"reference": "DMM260_schema",
+				"privileges": ["SELECT"]
+			}
+		]
+	}
+}

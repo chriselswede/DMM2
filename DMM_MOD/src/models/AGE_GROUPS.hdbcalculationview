@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="AGE_GROUPS" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="AGE_GROUPS"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="AGE_TABLE">
+    <resourceUri>AGE_TABLE</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews/>
+<logicalModel id="AGE_TABLE">
+  <attributes>
+    <attribute id="AGE" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AGE"/>
+      <keyMapping columnObjectName="AGE_TABLE" columnName="AGE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes>
+    <calculatedAttribute id="AGE_GROUP" order="1" semanticType="empty" displayAttribute="false" attributeHierarchyActive="false">
+      <keyCalculation datatype="NVARCHAR" expressionLanguage="SQL" length="4">
+        <formula>CASE 
+WHEN &quot;AGE&quot;&lt;20 THEN '0&lt;19'
+WHEN &quot;AGE&quot;&lt;40 THEN '20&lt;39'
+WHEN &quot;AGE&quot;&lt;60 THEN '40&lt;59'
+WHEN &quot;AGE&quot;&lt;80 THEN '60&lt;79'
+WHEN &quot;AGE&quot;&lt;100 THEN '80&lt;99'
+ELSE '&gt;100'
+END
+</formula>
+      </keyCalculation>
+      </calculatedAttribute>
+  </calculatedAttributes>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

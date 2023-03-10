@@ -19,5 +19,26 @@
       "schema": "DMM260",
       "database": "XSC"
     }
+  },
+  "TESTSCORES": {
+    "target": {
+      "object": "TESTSCORES",
+      "schema": "DMM260",
+      "database": "XSC"
+    }
+  },
+  "TESTSCORES_INT": {
+    "target": {
+      "object": "TESTSCORES_INT",
+      "schema": "DMM260",
+      "database": "XSC"
+    }
+  },
+  "QUALITY": {
+    "target": {
+      "object": "QUALITY",
+      "schema": "DMM260",
+      "database": "XSC"
+    }
   }
 }

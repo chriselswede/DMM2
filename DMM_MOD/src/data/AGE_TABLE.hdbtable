@@ -1,0 +1,1 @@
+column table "AGE_TABLE" ("AGE" NVARCHAR(3));

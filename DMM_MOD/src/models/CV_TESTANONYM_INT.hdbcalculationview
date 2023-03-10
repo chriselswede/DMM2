@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_TESTANONYM_INT" applyPrivilegeType="NONE" dataCategory="DEFAULT" schemaVersion="3.0" outputViewType="Projection" cacheInvalidationPeriod="NONE" enforceSqlExecution="false">
+<descriptions defaultDescription="CV_TESTANONYM_INT"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="TESTSCORES_INT">
+    <resourceUri>TESTSCORES_INT</resourceUri>
+  </DataSource>
+</dataSources>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="Projection_1">
+    <viewAttributes>
+      <viewAttribute id="ID"/>
+      <viewAttribute id="NAME"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="AGE"/>
+      <viewAttribute id="WEIGHT"/>
+      <viewAttribute id="HEIGHT"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="SCORE"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute id="AGE_STR" datatype="NVARCHAR" length="13" expressionLanguage="SQL">
+        <formula>cast(&quot;AGE&quot; as nvarchar(13))
+</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="TESTSCORES_INT"/>
+  </calculationView>
+  <calculationView xsi:type="Calculation:AnonymizeView" id="Anonymize_1" method="kAnonymity">
+    <viewAttributes>
+      <viewAttribute id="ID" aggregationType="sum"/>
+      <viewAttribute id="GENDER"/>
+      <viewAttribute id="WEIGHT" aggregationType="sum"/>
+      <viewAttribute id="HEIGHT" aggregationType="sum"/>
+      <viewAttribute id="LOCATION"/>
+      <viewAttribute id="SCORE" aggregationType="sum"/>
+      <viewAttribute id="AGE_STR"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="Projection_1">
+      <mapping xsi:type="Calculation:AttributeMapping" target="ID" source="ID"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="GENDER" source="GENDER"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="WEIGHT" source="WEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="HEIGHT" source="HEIGHT"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="LOCATION" source="LOCATION"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="SCORE" source="SCORE"/>
+      <mapping xsi:type="Calculation:AttributeMapping" target="AGE_STR" source="AGE_STR"/>
+    </input>
+    <anonymizeParameterization>
+      <seqColumn>ID</seqColumn>
+      <k>2</k>
+      <qidColumn id="AGE_STR"/>
+      <qidColumnHierarchy id="AGE_STR">
+        <hierarchy>AGE_GROUPS_HIERARCHY</hierarchy>
+      </qidColumnHierarchy>
+    </anonymizeParameterization>
+  </calculationView>
+</calculationViews>
+<logicalModel id="Anonymize_1">
+  <attributes>
+    <attribute id="ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="ID"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="ID"/>
+    </attribute>
+    <attribute id="GENDER" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="GENDER"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="GENDER"/>
+    </attribute>
+    <attribute id="WEIGHT" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="WEIGHT"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="WEIGHT"/>
+    </attribute>
+    <attribute id="HEIGHT" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HEIGHT"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="HEIGHT"/>
+    </attribute>
+    <attribute id="LOCATION" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="LOCATION"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="LOCATION"/>
+    </attribute>
+    <attribute id="SCORE" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SCORE"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="SCORE"/>
+    </attribute>
+    <attribute id="AGE_STR" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="AGE_STR"/>
+      <keyMapping columnObjectName="Anonymize_1" columnName="AGE_STR"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="Projection_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="84" y="378"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape expanded="true" modelObjectName="Anonymize_1" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="255"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>
