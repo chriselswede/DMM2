@@ -4,19 +4,64 @@
       "schema_privileges":[  
         {  
           "reference":"DMM260",
-          "privileges_with_grant_option":["SELECT", "SELECT METADATA", "EXECUTE"]
+          "privileges_with_grant_option":["EXECUTE", "SELECT", "SELECT METADATA"]
+        },
+        {  
+          "reference":"VT_SCHEMA",
+          "privileges_with_grant_option":["SELECT", "SELECT METADATA"]
         }
+	  ],    
+      "global_object_privileges" : [
+		{
+			"name" : "XS2_SOURCE",
+			"type" : "REMOTE SOURCE",
+			"privileges" : [ "CREATE VIRTUAL TABLE", "CREATE VIRTUAL PROCEDURE" ]
+		},
+		{
+			"name": "HANARemoteSourceXS2",
+			"type": "REMOTE SOURCE",
+			"privileges": [
+				"CREATE VIRTUAL TABLE",
+				"CREATE VIRTUAL FUNCTION",
+				"CREATE REMOTE SUBSCRIPTION",
+				"PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+				"ALTER",
+				"DROP"
+			]
+		}
       ]
     },
     "application_user":{
       "schema_privileges":[  
         {  
           "reference":"DMM260",
+          "privileges":["EXECUTE", "SELECT", "SELECT METADATA"]
+        },
+        {  
+          "reference":"VT_SCHEMA",
           "privileges":["SELECT", "SELECT METADATA"]
         }
+      ],    
+      "global_object_privileges" : [
+		{
+			"name" : "XS2_SOURCE",
+			"type" : "REMOTE SOURCE",
+			"privileges" : [ "CREATE VIRTUAL TABLE", "CREATE VIRTUAL PROCEDURE" ]
+		},
+		{
+			"name": "HANARemoteSourceXS2",
+			"type": "REMOTE SOURCE",
+			"privileges": [
+				"CREATE VIRTUAL TABLE",
+				"CREATE VIRTUAL FUNCTION",
+				"CREATE REMOTE SUBSCRIPTION",
+				"PROCESS REMOTE SUBSCRIPTION EXCEPTION",
+				"ALTER",
+				"DROP"
+			]
+		}
       ]
     }  
   }
 }
-
 

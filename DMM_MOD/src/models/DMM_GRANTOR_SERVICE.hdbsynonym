@@ -40,5 +40,12 @@
       "schema": "DMM260",
       "database": "XSC"
     }
+  },
+  "QUALITY_XS2": {
+    "target": {
+      "object": "QUALITY_XS2",
+      "schema": "VT_SCHEMA",
+      "database": "XSC"
+    }
   }
 }
